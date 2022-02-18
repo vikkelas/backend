@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "forever server.js",
+    "watch": "forever -w server.js"
+  },
+  "engines": {
+    "node": "11.x"
+  },
+  "author": "latyshev",
+  "license": "ISC",
+  "dependencies": {
+    "forever": "^4.0.3",
+    "koa": "^2.13.4",
+    "koa-body": "^4.2.0",
+    "uuidv4": "^6.2.12"
+  }
+}
