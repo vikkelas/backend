@@ -20,12 +20,12 @@ app.use(koaBody({
 }));
 
 app.use(async (ctx, next) => {
-   const origin = ctx.request.get('http://localhost:8080');
+   const origin = ctx.request.get('Origin');
    if (!origin) {
       return await next();
    }
    const headers = {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'http://localhost:8080',
    };
 
    if (ctx.request.method !== 'OPTIONS') {
