@@ -24,6 +24,7 @@ app.use(async (ctx) => {
       method
    } = ctx.request.query;
    if (ctx.request.method === 'GET' && method === 'allTikets') {
+      console.log(ctx.request.headers);
       ctx.response.body = tikets;
    }
 });
