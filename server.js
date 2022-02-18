@@ -25,7 +25,7 @@ app.use(async (ctx, next) => {
       return await next();
    }
    const headers = {
-      'Access-Control-Allow-Origin': 'http://localhost:8080',
+      'Access-Control-Allow-Origin': '*',
    };
 
    if (ctx.request.method !== 'OPTIONS') {
