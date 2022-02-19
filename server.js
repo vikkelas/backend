@@ -11,7 +11,7 @@ const tikets = [{
    id: 1,
    name: 'Поменять краску в принтере',
    description: 'Принтер на складе секция 8',
-   status: false,
+   status: true,
    created: '22.01.22 18:04'
 }];
 
