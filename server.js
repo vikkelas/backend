@@ -78,7 +78,7 @@ app.use(async (ctx) => {
          status: status,
          created: created,
       };
-      ticket.id = uuid4();
+      ticket.id = uuid();
       tickets.push(ticket);
       ctx.response.body = tickets;
    }
