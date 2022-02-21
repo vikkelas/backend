@@ -1,6 +1,7 @@
 const http = require('http');
 const Koa = require('koa');
 const koaBody = require('koa-body');
+const bodyParser = require('koa-bodyparser');
 const {
    uuid
 } = require('uuidv4');
@@ -21,6 +22,8 @@ app.use(koaBody({
    urlencoded: true,
    json: true,
 }));
+
+app.use(bodyParser());
 
 app.use(async (ctx, next) => {
    const origin = ctx.request.get('Origin');
@@ -66,7 +69,9 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-      ctx.response.body = ctx.request.body;
+
+      ctx.body = ctx.request.body;
+      ctx.response.body = ctx.body;
    }
 });
 
