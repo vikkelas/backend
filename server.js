@@ -66,9 +66,9 @@ app.use(async (ctx) => {
       const ticket = {};
       ticket.id = uuid();
       ticket.created = new Date().toLocaleString();
-      ticket.name = ctx.request.body.get('name');
-      tickets.push(ticket);
-      ctx.response.body = tickets;
+      // ticket.name = ctx.request.body.get('name');
+
+      ctx.response.body = ctx.request.body;
    }
 });
 
