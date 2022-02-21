@@ -16,7 +16,9 @@ const tickets = [{
 }];
 
 app.use(koaBody({
+   multipart: true,
    urlencoded: true,
+   json: true,
 }));
 
 app.use(async (ctx, next) => {
