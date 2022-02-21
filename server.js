@@ -63,11 +63,10 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-      const ticket = {};
-      ticket.name = ctx.request.body.get('name');
+      const ticket = ctx.request.body;
       ticket.id = uuid();
       tickets.push(ticket);
-      ctx.response.body = ctx.request.body;
+      ctx.response.body = tickets;
    }
 });
 
