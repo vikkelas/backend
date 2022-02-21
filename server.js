@@ -66,7 +66,9 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-      ctx.response.body = ctx.request.body;
+      const data = {};
+      data.name = ctx.request.body.name('name');
+      ctx.response.body = data;
    }
 });
 
