@@ -65,9 +65,8 @@ app.use(async (ctx) => {
    if (ctx.request.method === 'POST' && method === 'createTicket') {
       const ticket = ctx.request.body;
       ticket.id = uuid();
-      ticket.created = new Date().toLocaleString();
       tickets.push(ticket);
-      ctx.response.body = ctx.request.body;
+      ctx.response.body = tickets;
    }
 });
 
