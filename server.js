@@ -67,7 +67,7 @@ app.use(async (ctx) => {
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
       const data = {};
-      data.name = ctx.request.body.name('name');
+      data.name = ctx.request.body.name;
       ctx.response.body = data;
    }
 });
