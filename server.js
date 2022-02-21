@@ -1,7 +1,6 @@
 const http = require('http');
 const Koa = require('koa');
 const koaBody = require('koa-body');
-const bodyParser = require('koa-bodyparser');
 const {
    uuid
 } = require('uuidv4');
@@ -21,10 +20,6 @@ app.use(koaBody({
    multipart: true,
    urlencoded: true,
    json: true,
-}));
-
-app.use(bodyParser({
-   enableTypes: ['json', 'form', 'text', 'xml'],
 }));
 
 app.use(async (ctx, next) => {
@@ -71,7 +66,7 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-      ctx.response.body = ctx.request.bodyParser;
+      ctx.response.body = ctx.request.body;
    }
 });
 
