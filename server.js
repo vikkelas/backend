@@ -71,9 +71,7 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-
-      ctx.body = ctx.request.body;
-      ctx.response.body = ctx.body;
+      ctx.response.body = ctx.request.bodyParser;
    }
 });
 
