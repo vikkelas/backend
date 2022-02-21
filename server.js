@@ -5,7 +5,7 @@ const {
    uuid
 } = require('uuidv4');
 const app = new Koa();
-const port = process.env.PORT || 7070;
+const port = process.env.PORT || 8080;
 
 const tickets = [{
    id: 1,
@@ -66,11 +66,7 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-      const ticket = {};
-      ticket.name = ctx.request.body.get('name');
-      ticket.id = uuid();
-      tickets.push(ticket);
-      ctx.response.body = tickets;
+      ctx.response.body = ctx.request.body;
    }
 });
 
