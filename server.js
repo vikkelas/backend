@@ -23,7 +23,9 @@ app.use(koaBody({
    json: true,
 }));
 
-app.use(bodyParser());
+app.use(bodyParser({
+   enableTypes: ['json', 'form', 'text', 'xml'],
+}));
 
 app.use(async (ctx, next) => {
    const origin = ctx.request.get('Origin');
