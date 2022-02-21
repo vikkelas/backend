@@ -67,7 +67,7 @@ app.use(async (ctx) => {
       ticket.id = uuid();
       ticket.created = new Date().toLocaleString();
       tickets.push(ticket);
-      ctx.response.body = tickets;
+      ctx.response.body = ctx.request.body;
    }
 });
 
