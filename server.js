@@ -66,7 +66,19 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-      const ticket = ctx.request.body;
+      const {
+         name,
+         description,
+         status,
+         created
+      } = ctx.request.body;
+      const ticket = {
+         name: name,
+         description: description,
+         status: status,
+         created: created,
+      };
+      ticket.id = uuidv4();
       tickets.push(ticket);
       ctx.response.body = tickets;
    }
