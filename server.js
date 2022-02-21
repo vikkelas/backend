@@ -66,7 +66,7 @@ app.use(async (ctx) => {
       const ticket = ctx.request.body;
       ticket.id = uuid();
       tickets.push(ticket);
-      ctx.response.body = tickets;
+      ctx.response.body = ctx.request.body;
    }
 });
 
