@@ -16,6 +16,7 @@ const tickets = [{
 }];
 
 app.use(koaBody({
+   text: true,
    multipart: true,
    urlencoded: true,
    json: true,
