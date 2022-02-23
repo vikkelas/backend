@@ -65,25 +65,33 @@ app.use(async (ctx) => {
    if (ctx.request.method === 'GET' && method === 'allTickets') {
       ctx.response.body = tickets;
    }
-   if (ctx.request.method === 'POST') {
-
-      if (method === 'createTicket') {
-         const ticket = {};
-         ticket.name = ctx.request.body.name;
-         ticket.description = ctx.request.body.description;
-         ticket.status = ctx.request.body.status;
-         ticket.created = ctx.request.body.created;
-         ticket.id = uuid();
-         tickets.push(ticket);
-         ctx.response.body = tickets;
-      }
-      if (method === 'editTicket') {
-         const id = ctx.request.body.id;
-         const index = tickets.findIndex(item => item.id == id);
-         tickets[index].name = ctx.request.body.name;
-         tickets[index].description = ctx.request.body.description;
-         ctx.response.body = tickets;
-      }
+   if (ctx.request.method === 'POST' && method === 'createTicket') {
+      const {
+         name,
+         description,
+         status,
+         created
+      } = ctx.request.body;
+      const ticket = {
+         name: name,
+         description: description,
+         status: status,
+         created: created,
+      };
+      ticket.id = uuid();
+      tickets.push(ticket);
+      ctx.response.body = tickets;
+   }
+   if (ctx.request.method === 'POST' && method === 'editTicket') {
+      const {
+         id,
+         name,
+         description
+      } = ctx.request.body;
+      const index = tickets.findIndex(item => item.id == id);
+      tickets[index].name = name;
+      tickets[index].description = description;
+      ctx.response.body = tickets;
    }
 });
 
