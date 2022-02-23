@@ -70,7 +70,7 @@ app.use(async (ctx) => {
       if (method === 'createTicket') {
          const ticket = {};
          ticket.name = ctx.request.body.name;
-         ticket.discription = ctx.request.body.discription;
+         ticket.description = ctx.request.body.description;
          ticket.status = ctx.request.body.status;
          ticket.created = ctx.request.body.created;
          ticket.id = uuid();
