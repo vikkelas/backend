@@ -61,7 +61,8 @@ app.use(async (ctx, next) => {
 app.use(async (ctx) => {
    const {
       method,
-      id
+      id,
+      status,
    } = ctx.request.query;
    if (ctx.request.method === 'GET' && method === 'allTickets') {
       ctx.response.body = tickets;
@@ -70,6 +71,13 @@ app.use(async (ctx) => {
    if (ctx.request.method === 'GET' && method === 'deletTicket') {
       const index = tickets.findIndex(item => item.id == id);
       tickets.splice(index, 1);
+      ctx.response.body = tickets;
+   }
+   if (ctx.request.method === 'GET' && method === 'changeCheck') {
+      const index = tickets.findIndex(item => item.id == id);
+      if (status == 'false') {
+         tickets[index].status = 'true';
+      } else tickets[index].status = 'false';
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
