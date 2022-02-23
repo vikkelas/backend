@@ -66,7 +66,7 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
-      const {
+      let {
          name,
          description,
          status,
@@ -83,7 +83,7 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'editTicket') {
-      const {
+      let {
          id,
          name,
          description
