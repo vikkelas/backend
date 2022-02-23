@@ -8,7 +8,7 @@ const app = new Koa();
 const port = process.env.PORT || 8080;
 
 const tickets = [{
-   id: 1,
+   id: 123,
    name: 'Поменять краску в принтере',
    description: 'Принтер на складе секция 8',
    status: true,
@@ -60,9 +60,16 @@ app.use(async (ctx, next) => {
 
 app.use(async (ctx) => {
    const {
-      method
+      method,
+      id
    } = ctx.request.query;
    if (ctx.request.method === 'GET' && method === 'allTickets') {
+      ctx.response.body = tickets;
+      console.log(id);
+   }
+   if (ctx.request.method === 'GET' && method === 'deletTicket') {
+      const index = tickets.findIndex(item => item.id == id);
+      tickets.splice(index, 1);
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
