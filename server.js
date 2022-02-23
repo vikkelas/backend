@@ -62,7 +62,7 @@ app.use(async (ctx) => {
    const {
       method
    } = ctx.request.query;
-   if (ctx.request.method === 'GET' && method === 'allTikets') {
+   if (ctx.request.method === 'GET' && method === 'allTickets') {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST' && method === 'createTicket') {
@@ -80,6 +80,17 @@ app.use(async (ctx) => {
       };
       ticket.id = uuid();
       tickets.push(ticket);
+      ctx.response.body = tickets;
+   }
+   if (ctx.request.method === 'POST' && method === 'editTicket') {
+      const {
+         id,
+         name,
+         description
+      } = ctx.request.body;
+      const index = tickets.findIndex(item => item.id == id);
+      tickets[index].name = name;
+      tickets[index].description = description;
       ctx.response.body = tickets;
    }
 });
