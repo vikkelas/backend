@@ -66,28 +66,22 @@ app.use(async (ctx) => {
       ctx.response.body = tickets;
    }
    if (ctx.request.method === 'POST') {
-      const {
-         name,
-         description,
-         status,
-         created,
-         id,
-      } = ctx.request.body;
+
       if (method === 'createTicket') {
-         const ticket = {
-            name: name,
-            description: description,
-            status: status,
-            created: created,
-         };
+         const ticket = {};
+         ticket.name = ctx.request.body.name;
+         ticket.discription = ctx.request.body.discription;
+         ticket.status = ctx.request.body.status;
+         ticket.created = ctx.request.body.created;
          ticket.id = uuid();
          tickets.push(ticket);
          ctx.response.body = tickets;
       }
       if (method === 'editTicket') {
+         const id = ctx.request.body.id;
          const index = tickets.findIndex(item => item.id == id);
-         tickets[index].name = name;
-         tickets[index].description = description;
+         tickets[index].name = ctx.request.body.name;
+         tickets[index].description = ctx.request.body.description;
          ctx.response.body = tickets;
       }
    }
